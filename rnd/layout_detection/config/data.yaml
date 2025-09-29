@@ -1,0 +1,14 @@
+# Dataset configuration for symbol detection training
+# This will be automatically updated by the training script
+
+path: data\split  # Dataset root path 
+train: train/images  # Train images (relative to 'path')
+val: val/images      # Val images (relative to 'path')
+test: test/images    # Test images (relative to 'path')
+
+# Number of classes
+nc: 1
+
+# Class names
+names:
+  0: legend

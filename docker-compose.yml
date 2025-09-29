@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  yolo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        S3_BUCKET: ${S3_BUCKET}
+        DETECTION_MODEL_FOLDER: ${DETECTION_MODEL_FOLDER}
+        PDF_CLASSIFIER_FOLDER: ${PDF_CLASSIFIER_FOLDER}
+        RAW_LEGEND_FOLDER: ${RAW_LEGEND_FOLDER}
+        AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+        AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+        AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    runtime: nvidia

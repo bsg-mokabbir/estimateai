@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+*.egg-info/
+
+# Distribution / packaging
+build/
+dist/
+*.egg
+*.whl
+
+# Test, coverage, and logs
+*.log
+.coverage
+htmlcov/
+*.pytest_cache/
+.pytest_cache/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Git and other VCS
+.git/
+.gitignore
+
+# Docker files
+docker-compose.yml
+Dockerfile
+
+# Data and output
+*.csv
+*.tsv
+*.sqlite3
+*.db
+*.h5
+*.pth
+*.ckpt
+
+# Environment files
+.env
+.env.*
+.venv/
