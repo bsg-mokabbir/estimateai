@@ -74,6 +74,7 @@ rnd/data_agumentation/pdfs/
 dynamic_extracted*
 temp_*
 tmp_*
+detection_saves
 
 
 
