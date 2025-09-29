@@ -1,0 +1,96 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+.env
+.venv
+env/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Images and Data
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.svg
+
+
+# ==========================
+# Drawn Images & Dataset Handling
+# ==========================
+
+# Ignore everything in drawn_images and images
+rnd/data_agumentation/drawn_images/**
+rnd/data_agumentation/images/**
+rnd/data_agumentation/sample_legends/
+rnd/data_agumentation/pdfs/
+
+# Keep specific folders (so that selected files can be tracked)
+!rnd/data_agumentation/drawn_images/
+!rnd/data_agumentation/drawn_images/images/
+!rnd/data_agumentation/drawn_images/labels/
+!rnd/data_agumentation/images/
+
+# Allow (un-ignore) specific files
+!rnd/data_agumentation/drawn_images/images/image001.png
+!rnd/data_agumentation/drawn_images/labels/image001.txt
+!rnd/data_agumentation/drawn_images/legend_annotations_resize.json
+!rnd/data_agumentation/images/image002.png
+
+
+# ==========================
+# Training Outputs ignore
+# ==========================
+rnd/layout_detection/runs/*
+
+
+# ==========================
+# Data folders to ignore completely
+# ==========================
+rnd/layout_detection/data/**        
+!rnd/layout_detection/data/        
+!rnd/layout_detection/data/.gitkeep
+
+rnd/data_agumentation/sample_legends/
+rnd/data_agumentation/without_takeoff_pdf_images/
+rnd/data_agumentation/pdfs/
+
+# Dynamic extracted files (timestamp based folders/files)
+dynamic_extracted*
+temp_*
+tmp_*
+
+
+
+# Models
+*.pt
+*.pth
+*.onnx
+runs/
+weights/
+
+# Logs
+*.log
+logs/
+
+# Temporary
+*.tmp
+*.temp
+
+# Streamlit cache
+.streamlit/

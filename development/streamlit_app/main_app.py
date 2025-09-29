@@ -9,6 +9,7 @@ from development.streamlit_app.tab1_pdf_processing import PDFProcessor
 from development.streamlit_app.tab2_legend_detection import LegendDetector
 from development.streamlit_app.tab3_symbol_counting import SymbolCounter
 from development.streamlit_app.tab4_cable_length_with_cable_size import CableLengthCalculator
+from development.streamlit_app.s3_model_loader import get_model_paths
 
 # Simple credentials
 VALID_CREDENTIALS = {
@@ -111,11 +112,16 @@ def main():
     # Initialize session state
     initialize_session_state()
     
-    # Model and folder paths
-    MODEL_PATH = "/app/data/development/detection-model/iteration-4_500Epoch_50Black_50Red.pt" 
-    CLASSIFIER_MODEL_PATH = "/app/data/development/pdf-classifier/fine-tuned-dit-20" 
-    SYMBOL_FOLDER = "/app/data/development/raw-legend"
-
+    # Load models and paths from S3
+    try:
+        with st.spinner("🔄 Loading models from S3..."):
+            paths = get_model_paths()
+            MODEL_PATH = paths["detection_model"]
+            CLASSIFIER_MODEL_PATH = paths["classifier_model"]
+            SYMBOL_FOLDER = paths["symbol_folder"]
+    except Exception as e:
+        st.error(f"❌ Failed to load models: {str(e)}")
+        st.stop()
     
     # Initialize processors with model paths
     pdf_processor = PDFProcessor(classifier_model_path=CLASSIFIER_MODEL_PATH)
@@ -135,7 +141,7 @@ def main():
         """)
        
         st.header("ℹ️ About")
-        st.write("This   tool extracts pages from PDF, detects symbols in legend pages, and counts them across AutoCAD and Circuit pages.")
+        st.write("This tool extracts pages from PDF, detects symbols in legend pages, and counts them across AutoCAD and Circuit pages.")
     
     # Create tabs
     tab1, tab2, tab3, tab4 = st.tabs(["📄 PDF Upload & Processing", "🔍 Legend Detection", "🔢 Symbol Counting", "🔌 Cable Length"])
@@ -143,8 +149,6 @@ def main():
     # Tab 1: PDF Processing
     with tab1:
         pdf_processor.run_tab1()
-    
-
     
     # Tab 2: Legend Detection
     with tab2:
