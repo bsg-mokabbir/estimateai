@@ -31,3 +31,5 @@ torchvision==0.23.0
 transformers==4.55.2
 ultralytics==8.3.184
 streamlit_image_coordinates==0.4.0
+boto3==1.40.40
+botocore==1.40.40
